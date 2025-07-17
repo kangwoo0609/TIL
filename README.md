@@ -9,24 +9,27 @@
 
 * add, commit, push
 
-1. add
-git add로 설정 가능 
-git hub에 올리고 싶은 파일을 staging area에 달아두는 것
+1. add<br>
+git add로 설정 가능<br>
+git hub에 올리고 싶은 파일을 staging area에 달아두는 것<br>
 
-2. commit
-git commit으로 가능
-현재 staging area에 올라가 있는 파일들이 어떤 version(어떤 변화가 있었는지)인지 명시
+2. commit<br>
+git commit으로 가능<br>
+현재 staging area에 올라가 있는 파일들이 어떤 version(어떤 변화가 있었는지)인지 명시<br>
 
-3. push
-git push로 가능
-보내기 전에 어떤 repository로 보낼지 경로 설정이 필요
+3. push<br>
+git push로 가능<br>
+보내기 전에 어떤 repository로 보낼지 경로 설정이 필요<br>
 staging area에 있는 파일을 github repository에 넘기기
 
 * pull, clone
 
 1. pull
+<br>
 git repository에 있는 파일 중 변경 사항만 가져오기
+<br>
 github에서 파일을 수정한 후, local repository(working directory)로 수정(변경) 사항 가져오기
 
 2. clone
+<br>
 아묻따 복사
