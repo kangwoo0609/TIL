@@ -24,12 +24,9 @@ staging area에 있는 파일을 github repository에 넘기기
 
 * pull, clone
 
-1. pull
-<br>
-git repository에 있는 파일 중 변경 사항만 가져오기
-<br>
+1. pull<br>
+git repository에 있는 파일 중 변경 사항만 가져오기<br>
 github에서 파일을 수정한 후, local repository(working directory)로 수정(변경) 사항 가져오기
 
-2. clone
-<br>
+2. clone<br>
 아묻따 복사
