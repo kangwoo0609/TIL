@@ -1,62 +1,81 @@
-# Github 입문
+# GitHub 핵심 요약 및 사용법
 
-* 설정
+> GitHub: 코드를 저장, 버전을 관리하고 다른 사람과 협업하기 위한 온라인 공간.
 
-1. Gitbash 다운받고 설치, 약간 기억 안 남
-2. 중간에 뭐 계정 설정도 있었던 듯?
-3. git init을 통해서 github에서 관리할 수 있도록 함
-4. github에서 파일들을 받아줄 수 있는 repository 만들기
+### ✅ 핵심 워크플로우: `add` → `commit` → `push`
+가장 기본적이고 반복적으로 사용되는 3단계 작업 흐름.
 
-* add, commit, push
+1.  **`git add`**: 변경된 파일들을 Staging Area(임시 영역)에 추가.
+2.  **`git commit`**: Staging Area에 있는 파일들을 하나의 버전으로 기록.
+3.  **`git push`**: 로컬에 기록된 버전을 원격 저장소(GitHub)에 업로드.
 
-1. add<br>
-git add로 설정 가능<br>
-git hub에 올리고 싶은 파일을 staging area에 달아두는 것<br>
+---
 
-2. commit<br>
-git commit으로 가능<br>
-현재 staging area에 올라가 있는 파일들이 어떤 version(어떤 변화가 있었는지)인지 명시<br>
-commit = 변경된 행동
+## 🚀 1. 프로젝트 설정
 
-4. push<br>
-git push로 가능<br>
-보내기 전에 어떤 repository로 보낼지 경로 설정이 필요<br>
-staging area에 있는 파일을 github repository에 넘기기
+> 로컬 컴퓨터의 프로젝트 폴더를 GitHub 원격 저장소와 연결하는 초기 과정.
 
-* pull, clone
+1.  **사용자 정보 설정**: Git에 사용자 이름과 이메일 주소를 등록.
+    ```bash
+    git config --global user.name "사용자명"
+    git config --global user.email "이메일"
+    ```
+2.  **로컬 저장소 초기화 (`init`)**: Git으로 버전 관리를 시작할 폴더에서 명령어 실행.
+    ```bash
+    git init
+    ```
+3.  **원격 저장소 연결**: GitHub에 생성한 Repository 주소를 로컬 프로젝트에 등록.
+    ```bash
+    git remote add origin <GitHub 저장소 주소>
+    ```
 
-1. pull<br>
-git repository에 있는 파일 중 변경 사항만 가져오기<br>
-github에서 파일을 수정한 후, local repository(working directory)로 수정(변경) 사항 가져오기
+---
 
-2. clone<br>
-아묻따 복사
+## 📦 2. 작업물 저장 및 공유
 
+> 로컬에서 변경된 작업물을 원격 저장소에 저장하는 과정.
 
-* .gitignore<br>
-add, commit, push 하기 싫은/하면 안되는 파일들을 여기에 등록하면 됨<br>
-다만, git에 의해 관리가 되고 있으면 소용 없음. 캐시 지우고 다시 등록해야 됨
+-   **`add`**: Staging Area에 파일을 추가함.
+    -   `git add <파일명>`: 특정 파일만 추가.
+    -   `git add .`: 변경된 모든 파일을 추가.
+-   **`commit`**: Staging Area의 파일들을 하나의 논리적 단위(버전)로 묶어 기록함. 변경 사항에 대한 메시지를 함께 기록하는 것이 중요.
+    -   `git commit -m "변경 내용에 대한 요약 메시지"`
+-   **`push`**: 로컬 저장소에 있는 커밋 기록들을 원격 저장소로 업로드함.
+    -   `git push origin main`
 
-**잘 안 씀**
-* revert<br>
-단일 commit의 실행을 취소하는 것<br>
-대신 commit 자체가 사라지는 건 아니고, commit으로 실행한 것이 취소되는 거임(commit의 기록은 남음)<br>
-취소할 때는 파일이름이 아니라! commit 번호(ID)를 입력해야 됨
+---
 
-* reset<br>
-특정 commit으로 되돌아가는 것(save & load의 개념)<br>
-단, 그 commit 이후의 모든 commit은 삭제됨<br>
-그래도 옵션을 통해서 그 기록을 남길지, 남길지 선택 가능<br>
-soft는 commit을 push는 안 하고 add한 상태로 남기기<br>
-mixed는 local에 파일은 남기고 add 전 상태로 두는 것(기본값)<br>
-hard는 얘는 아예 진짜로 회귀하는 것. 이전 commit으로 바뀐 것들이 다 사라짐
+## 🤝 3. 원격 저장소 내용 가져오기
 
-* restore<br>
-아직 add되지 않은 파일에 대해서 완전 복구해버리는 것<br>
-staging 된 최종 commit의 version으로 복구하기 >> 취소 불가!<br>
+> 원격 저장소의 내용을 로컬 컴퓨터로 가져올 때 사용.
 
-* rm --cached<br>
-commit 되기 이전에 add만 취소하는 것
+| 명령어 | 설명 | 사용 시점 |
+| :--- | :--- | :--- |
+| **`clone`** | 원격 저장소 전체를 **새롭게 복제** | 프로젝트를 맨 처음 로컬 환경으로 가져올 때 |
+| **`pull`** | 원격 저장소의 **최신 변경사항만** 가져와 병합 | 기존에 `clone`한 프로젝트를 최신 상태로 업데이트할 때 |
 
-* restore --staged<br>
-얘도 수정 commit 달기 전에 add된 거 취소하는 것
+---
+
+## 🙈 4. 특정 파일 무시 (`.gitignore`)
+
+> Git이 특정 파일이나 폴더를 추적하지 않도록 설정하는 목록.
+
+-   **용도**: 개인정보, 보안 키, 로그 파일, 빌드 결과물 등 저장소에 올릴 필요가 없는 항목들을 제외시킬 때 사용.
+-   **주의**: 이미 Git이 추적하고 있는 파일은 `.gitignore`에 추가해도 즉시 적용되지 않음. 캐시를 삭제하는 과정이 필요. (`git rm --cached <파일명>`)
+
+---
+
+## ⏪ 5. 작업 되돌리기 (고급 기능)
+
+> 특정 시점의 코드로 돌아가거나, 특정 작업 내용을 취소할 때 사용. 신중한 사용이 필요함.
+
+-   **`revert`**: 특정 커밋이 남긴 변경 사항을 **취소하는 새로운 커밋**을 생성.
+    -   **특징**: 기존 커밋 기록을 삭제하지 않아 안전하게 협업 이력을 남길 수 있음.
+
+-   **`reset`**: 특정 커밋 시점으로 **상태를 되돌림**. 이후의 커밋 기록이 삭제될 수 있음.
+
+| `reset` 옵션 | 설명 | 결과 |
+| :--- | :--- | :--- |
+| **`--soft`** | 커밋만 취소 | 변경 내용은 Staging Area에 남아있음 (`add`된 상태) |
+| **`--mixed`** (기본) | 커밋과 Staging을 취소 | 변경 내용은 Working Directory에 남아있음 (파일은 그대로) |
+| **`--hard`** | 모든 것을 되돌림 | 특정 커밋 이후의 모든 변경 내용이 **완전히 삭제됨** (복구 어려움) |
